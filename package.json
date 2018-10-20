@@ -1,0 +1,14 @@
+{
+  "name": "34-protons-protractor-automation",
+  "version": "1.0.0",
+  "description": "Project to evaluate protractor as a browser automation tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "protractor conf.js"
+  },
+  "author": "Steve McKinney",
+  "license": "ISC",
+  "devDependencies": {
+    "protractor": "^5.4.1"
+  }
+}
