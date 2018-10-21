@@ -9,6 +9,8 @@ exports.config = {
         browserName: 'firefox'
     },
 
+    //SELENIUM_PROMISE_MANAGER: false,
+
     // Spec patterns are relative to the configuration file location passed
     // to protractor (in this example conf.js).
     specs: ['specs/**/*spec.js'],
