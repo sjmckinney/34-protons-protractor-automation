@@ -4,11 +4,17 @@
   "description": "Project to evaluate protractor as a browser automation tool",
   "main": "index.js",
   "scripts": {
-    "test": "protractor conf.js"
+    "test": "protractor conf.js",
+    "tsc": "tsc",
+    "compile_test": "tsc && npm test"
   },
   "author": "Steve McKinney",
   "license": "ISC",
   "devDependencies": {
-    "protractor": "^5.4.1"
+    "@types/jasmine": "^3.3.8",
+    "@types/jasminewd2": "^2.0.6",
+    "@types/node": "^10.12.24",
+    "protractor": "^5.4.2",
+    "typescript": "^3.3.3"
   }
 }

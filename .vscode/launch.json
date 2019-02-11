@@ -12,7 +12,9 @@
             "program": "${workspaceRoot}/node_modules/protractor/bin/protractor",
             "args": [
                 "${workspaceRoot}/conf.js"
-            ]
+            ],
+            "sourceMaps": true,
+            "outFiles": [ "${workspaceRoot}/dist/**/*.js" ]
         }
     ]
 }
