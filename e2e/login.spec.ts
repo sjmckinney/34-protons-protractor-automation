@@ -1,55 +1,57 @@
-import { protractor, browser } from 'protractor';
+import { browser } from 'protractor';
 import { LoginPage } from './login.po';
 import { DemoPage } from './demo.po';
 
 describe('Login page should allow or deny access dependent on credentials', () => {
 
-    const EC=protractor.ExpectedConditions;
-    const loginPage = new LoginPage();
-    const demoPageTitle = 'Demo page for selenium code';
-    const _6_thousand_ms = 6000;
+    const loginPage: LoginPage = new LoginPage(browser);
+    const demoPage: DemoPage = new DemoPage(browser);
+    const demoPageTitle: string = 'Demo page for selenium code';
+    const loadingMessage: string = 'Loading... Please wait';
+    const invalidUserMessage: string = 'Username or password invalid';
+    const spec: string = 'login.spec';
 
 	beforeEach(() => {
 		browser.waitForAngularEnabled(false);
 		loginPage.get('login.php');
     });
     
-    it('Login page title should be correct', async () => {
+    it('should display correct title on Login page', async () => {
 
         let loginPageTitle = await loginPage.getPageTitle();
         expect(loginPageTitle).toContain('Login page');
+        console.info(`${spec}: Login page title is: ${loginPageTitle}`);
 
     })
 
-	it('Correct username and password should show user message while logging in', async () => {
+	it('should show user page loading message whilst logging in', async () => {
 
         await loginPage.loginWithValidCredentials();
 
 		let msg = await loginPage.getLoginMessage();
-        expect(msg).toContain('Loading... Please wait');
-        console.log(`User message text is: ${msg}`);
+        expect(msg).toContain(loadingMessage);
+        console.info(`${spec}: Page loading message text is: ${msg}`);
 
     });
 
-    it('Correct username and password should allow access to demo page within 6 seconds', async () => {
-
+    it('should allow access to demo page with valid credentials within 6 seconds', async () => {
+        
         await loginPage.loginWithValidCredentials();
+        await demoPage.waitForPageToLoad();
 
-        let demoPage = new DemoPage();
-        browser.wait(EC.visibilityOf(demoPage.pageTitle), _6_thousand_ms, `Demo page has failed to open after ${_6_thousand_ms} milliseconds`);
         let title = await demoPage.getPageTitle();
-        console.log(`Demo page title is: ${title}`);
         expect(title).toContain(demoPageTitle);
+        console.info(`${spec}: Demo page title is: ${title}`);
 
     });
 
-    it('Incorrect username or password should cause error message to be displayed', async () => {
+    it('should display error message if attempt to login with invalid credentials', async () => {
 
         await loginPage.loginWithInvalidCredentials();
 
 		let msg = await loginPage.getLoginMessage();
-        expect(msg).toContain('Username or password invalid');
-        console.debug(`User message text is: ${msg}`);
+        expect(msg).toContain(invalidUserMessage);
+        console.info(`${spec}: Invalid user message text is: ${msg}`);
 
     })
 

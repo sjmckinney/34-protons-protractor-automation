@@ -4,7 +4,7 @@
   "description": "Project to evaluate protractor as a browser automation tool",
   "main": "index.js",
   "scripts": {
-    "test": "protractor conf.js",
+    "test": "tsc && protractor conf.js",
     "tsc": "tsc",
     "compile_test": "tsc && npm test"
   },
@@ -16,5 +16,9 @@
     "@types/node": "^10.12.24",
     "protractor": "^5.4.2",
     "typescript": "^3.3.3"
+  },
+  "dependencies": {
+    "jasmine-spec-reporter": "^4.2.1",
+    "tslint": "^5.13.0"
   }
 }
