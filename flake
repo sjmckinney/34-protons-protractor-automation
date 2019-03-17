@@ -10,13 +10,14 @@
  */
 
 const protractorFlake = require('protractor-flake');
+//const my_parser = require('./node_modules/protractor-flake/lib/parsers/my_parser')
 // skip first two passed args (node and self)
 let protractorArgs = process.argv.splice(2);
 
 protractorFlake({
     protractorPath: 'node_modules/.bin/protractor',
     maxAttempts: 2,
-    parser: 'standard',
+    parser: './my_parser.js',
     nodeBin: 'node',
     protractorArgs: protractorArgs
 }, (status, output) => {
