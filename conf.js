@@ -35,7 +35,13 @@ exports.config = {
 
 	onPrepare: function(){
 		var SpecReporter = require('jasmine-spec-reporter').SpecReporter;
-		jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
+		jasmine.
+		getEnv().
+		addReporter(new SpecReporter({
+									spec: {displayStacktrace: true},
+									summary: {displayDuration: true}
+									})
+		  						);
 	},
 
 	jasmineNodeOpts: {
@@ -44,6 +50,7 @@ exports.config = {
 		realtimeFailure: true,
 		includeStackTrace: true,
 		defaultTimeoutInterval: 30000,
+		displaySpecDuration: true,
 		//prevent default 'dot' reporter output
 		print: function() {}
 	}
