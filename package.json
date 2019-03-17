@@ -6,7 +6,8 @@
   "scripts": {
     "test": "tsc && protractor conf.js",
     "tsc": "tsc",
-    "compile_test": "tsc && npm test"
+    "compile_test": "tsc && npm test",
+    "auto_retest": "tsc && protractor-flake --parser standard  --max-attempts=3 -- conf.js"
   },
   "author": "Steve McKinney",
   "license": "ISC",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "jasmine-spec-reporter": "^4.2.1",
+    "protractor-flake": "^4.0.0",
     "tslint": "^5.13.0"
   }
 }

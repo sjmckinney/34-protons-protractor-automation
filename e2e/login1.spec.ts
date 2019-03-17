@@ -9,9 +9,9 @@ describe('Login page should allow or deny access dependent on credentials', () =
     const demoPageTitle: string = 'Demo page for selenium code';
     const loadingMessage: string = 'Loading... Please wait';
     const invalidUserMessage: string = 'Username or password invalid';
-    const spec: string = 'login.spec';
+    const spec: string = 'login1.spec';
 
-    console.log('LoginSpec - ******** - LoginSpec - ******** - LoginSpec - ******** - LoginSpec - ******** - LoginSpec');
+    console.log('LoginSpec1 - ******** - LoginSpec1 - ******** - LoginSpec1 - ******** - LoginSpec1 - ******** - LoginSpec1');
 
 	beforeEach(() => {
 		browser.waitForAngularEnabled(false);
@@ -31,7 +31,7 @@ describe('Login page should allow or deny access dependent on credentials', () =
         await loginPage.loginWithValidCredentials();
 
 		let msg = await loginPage.getLoginMessage();
-        expect(msg).toContain(loadingMessage + '1');
+        expect(msg).toContain(loadingMessage);
         console.info(`${spec}: Page loading message text is: ${msg}`);
 
     });
